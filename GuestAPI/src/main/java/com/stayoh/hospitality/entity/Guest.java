@@ -43,6 +43,11 @@ public class Guest extends AuditModel {
 	
 	
 	
+	public Guest(int i, String firstName, String lastName) {
+		this.guestId = i;
+		this.firstName = firstName;
+		this.lastName = lastName;
+	}
 	public int getGuestId() {
 		return guestId;
 	}
