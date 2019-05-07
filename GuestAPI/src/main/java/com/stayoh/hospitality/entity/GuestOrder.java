@@ -12,28 +12,32 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
+import org.springframework.beans.factory.annotation.Autowired;
+
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 
 @Entity
 public class GuestOrder {
-	
+	@Autowired Guest g;
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int orderId;
 	
 	
+	
+	
 	@ManyToOne(fetch = FetchType.LAZY)//cascade= CascadeType.ALL)
 	@JoinColumn(name="guestt")//,referencedColumnName="guestId")//, nullable=false)
-	@JsonIgnore
+	//@JsonIgnore
 	private Guest guest;
 	
+
 	@OneToMany(mappedBy="orderId",cascade= CascadeType.ALL)
 	private List<Item> item;
 	
 	
 	private int quantity;
-
 
 	public int getOrderId() {
 		return orderId;
@@ -43,25 +47,18 @@ public class GuestOrder {
 	public void setOrderId(int orderId) {
 		this.orderId = orderId;
 	}
-	
-	  public void setGuest(Guest guestId) { this.guest = guestId; }
-	 
-
 
 	public List<Item> getItem() {
 		return item;
 	}
 
-
 	public void setItem(List<Item> item) {
 		this.item = item;
 	}
 
-
 	public int getQuantity() {
 		return quantity;
 	}
-
 
 	public void setQuantity(int quantity) {
 		this.quantity = quantity;

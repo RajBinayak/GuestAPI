@@ -4,7 +4,6 @@ import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -13,7 +12,9 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import org.springframework.stereotype.Service;
 
+@Service
 @Entity
 @Table(name = "guest")
 public class Guest extends AuditModel {
@@ -30,7 +31,7 @@ public class Guest extends AuditModel {
 	@JoinColumn(name="roomId")
 	private Room roomidInGuest;
 	
-	@OneToMany(cascade= CascadeType.ALL,mappedBy="guest", fetch = FetchType.LAZY)
+	@OneToMany(cascade= CascadeType.ALL,mappedBy="guest")
 	private List<GuestOrder> guestOrder;
 	
 	private String firstName;
@@ -44,6 +45,7 @@ public class Guest extends AuditModel {
 	
 	
 	public int getGuestId() {
+		
 		return guestId;
 	}
 	public void setGuestId(int guestId) {
