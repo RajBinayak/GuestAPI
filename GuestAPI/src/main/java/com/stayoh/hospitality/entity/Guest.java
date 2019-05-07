@@ -13,6 +13,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import org.springframework.stereotype.Service;
 
 @Entity
 @Table(name = "guest")
@@ -42,7 +43,8 @@ public class Guest extends AuditModel {
 	//private Date checkOutDate;
 	
 	
-	
+	public Guest()
+	{}
 	public Guest(int i, String firstName, String lastName) {
 		this.guestId = i;
 		this.firstName = firstName;
