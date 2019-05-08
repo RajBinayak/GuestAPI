@@ -76,12 +76,13 @@ public class Guest extends AuditModel {
 	public void setGuestOrder(List<GuestOrder> guestOrder) {
 		this.guestOrder = guestOrder;
 	}
-	public String getFirstName() {
-		return firstName;
-	}
 	public void setFirstName(String firstName) {
 		this.firstName = firstName;
 	}
+	public String getFirstName() {
+		return firstName;
+	}
+	
 	public String getLastName() {
 		return lastName;
 	}

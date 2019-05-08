@@ -1,6 +1,10 @@
 package com.stayoh.hospitality;
 
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertThat;
+import static org.mockito.Mockito.times;
+import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
 import java.util.ArrayList;
@@ -60,5 +64,63 @@ public class JUnitTest {
 		
 	}
 	
+	@Test
+	public void testGuestSaveSuccess()
+	{
+		Guest empOne = new Guest(1, "Lokesh","Das");
+		useCase.save(empOne);
+		verify(guestGateway, times(1)).save(empOne);
+		assertThat(empOne.getFirstName()).isNotNull();
+	}
+	
+	@Test
+	public void testGuestUpdateSuccess()
+	{
+		
+		Guest empOne = new Guest(1, "Lokesh","Das");
+		useCase.update(empOne);
+		verify(guestGateway, times(1)).update(empOne);
+		assertEquals("Lokesh",empOne.getFirstName());
+	}
+	
+	@Test
+	public void testGuestDeleteSuccess()
+	{
+		ArrayList<Guest> guestList = new ArrayList<Guest>();
+		Guest empOne = new Guest(1, "Lokesh","Das");
+		guestList.add(empOne);
+		
+		String result = guestGateway.delete(1);
+		when(guestGateway.delete(1)).thenReturn(result);
+		
+		assertEquals(null, result);
+		
+		
+		
+	}
+	
 
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

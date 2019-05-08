@@ -28,7 +28,7 @@ public class MockitoTestCase extends GuestApiApplicationTests {
 	   public void findAllEmployeesTest() throws Exception
 	   {
 		 
-		mockMvc.perform(get("/api/guest/2")).andExpect(status().isOk())
+		mockMvc.perform(get("/api/guest/1")).andExpect(status().isOk())
 		.andExpect(content().contentType("application/json;charset=UTF-8"))
 		.andExpect(jsonPath("$.guestId").value(2))
 		.andExpect(jsonPath("$.createdAt").value("2019-05-07"))
